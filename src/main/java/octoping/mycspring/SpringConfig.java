@@ -1,6 +1,7 @@
 package octoping.mycspring;
 
 import octoping.mycspring.repository.JdbcMemberRepository;
+import octoping.mycspring.repository.JdbcTemplateMemberRepository;
 import octoping.mycspring.repository.MemberRepository;
 import octoping.mycspring.repository.MemoryMemberRepository;
 import octoping.mycspring.service.MemberService;
@@ -28,6 +29,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
