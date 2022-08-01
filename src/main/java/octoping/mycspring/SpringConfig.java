@@ -1,7 +1,9 @@
 package octoping.mycspring;
 
+import javax.persistence.EntityManager;
 import octoping.mycspring.repository.JdbcMemberRepository;
 import octoping.mycspring.repository.JdbcTemplateMemberRepository;
+import octoping.mycspring.repository.JpaMemberRepository;
 import octoping.mycspring.repository.MemberRepository;
 import octoping.mycspring.repository.MemoryMemberRepository;
 import octoping.mycspring.service.MemberService;
@@ -14,11 +16,17 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private DataSource dataSource;
+//    private DataSource dataSource;
+//    @Autowired
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
+
+    private EntityManager entityManager;
 
     @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringConfig(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Bean
@@ -30,6 +38,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(entityManager);
     }
 }

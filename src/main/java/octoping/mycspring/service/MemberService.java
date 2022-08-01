@@ -6,8 +6,9 @@ import octoping.mycspring.domain.Member;
 import octoping.mycspring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
