@@ -1,17 +1,11 @@
 package octoping.mycspring;
 
-import javax.persistence.EntityManager;
-import octoping.mycspring.repository.JdbcMemberRepository;
-import octoping.mycspring.repository.JdbcTemplateMemberRepository;
-import octoping.mycspring.repository.JpaMemberRepository;
+import octoping.mycspring.aop.TimeTraceAop;
 import octoping.mycspring.repository.MemberRepository;
-import octoping.mycspring.repository.MemoryMemberRepository;
 import octoping.mycspring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
@@ -48,4 +42,9 @@ public class SpringConfig {
 ////        return new JdbcTemplateMemberRepository(dataSource);
 ////        return new JpaMemberRepository(entityManager);
 //    }
+
+    @Bean
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
+    }
 }
