@@ -15,7 +15,6 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-//    @Column(name)
     private String username;
 
     @Embedded
