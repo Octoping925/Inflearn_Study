@@ -75,7 +75,7 @@ public class Order {
         }
 
         this.setStatus(OrderStatus.CANCEL);
-        orderItems.stream().forEach(orderItem -> orderItem.cancel());
+        orderItems.forEach(OrderItem::cancel);
     }
 
 
