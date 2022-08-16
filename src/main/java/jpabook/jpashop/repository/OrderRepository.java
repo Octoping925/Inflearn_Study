@@ -32,10 +32,10 @@ public class OrderRepository {
      public List<Order> findAllByString(OrderSearch orderSearch) {
          String jpql = "SELECT o FROM Order o JOIN o.member m WHERE 1=1";
          if (orderSearch.getOrderStatus() != null) {
-             jpql += " and o.status = :status";
+             jpql += " AND o.status = :status";
          }
          if (orderSearch.getMemberName() != null) {
-             jpql += " and m.username like :name";
+             jpql += " AND m.username LIKE :name";
          }
          TypedQuery<Order> query = em.createQuery(jpql, Order.class).setMaxResults(1000);
          if (orderSearch.getOrderStatus() != null) {
